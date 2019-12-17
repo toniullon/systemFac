@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Infordepco" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e1ac27c8-cfae-4a8e-9b81-8d0dd8749d3c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pedidoproveedores v left join personas c on v.id_persona=c.id_persona  where fecha_pedidop >=$P{fecha}
+AND fecha_pedidop <=$P{fechad} order by id_pedidoproveedor]]>
+	</queryString>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="nombre_persona" class="java.lang.String"/>
+	<field name="apellido_persona" class="java.lang.String"/>
+	<field name="direccion_persona" class="java.lang.String"/>
+	<field name="telefono_persona" class="java.lang.String"/>
+	<field name="correo_persona" class="java.lang.String"/>
+	<field name="ruc_persona" class="java.lang.String"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="id_tipopersona" class="java.lang.Integer"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="33b8ca24-a637-4eb2-8e56-c7e2f90df24d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_pedidoproveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="6896e822-7853-4a89-9b6a-b34683e3263a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estado_pedidop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="15625343-9e05-4966-bc1e-098376487437"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="c931b52f-266f-4795-bc8c-d497323c9b1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{direccion_persona}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> PEDIDOS A PROVEEDORES </title>
+        <!---   <link rel="icon" type="image/png" href="../../../favicon.png" /> --->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body background="../../../img/fondo_3.jpg" style="background-size: 100%">
+
+        <div class="ventana" id="alerta">
+            <span><img src="../../../img/alert.png" alt=""/></span>
+            <span>Stock Insuficiente</span>
+            <div class="aceptar" id="cierraRe"><img src="../../../img/acep_norm.png" alt=""/></div>
+        </div>
+
+        <div class="ventanaP" id="NumeroPedido">
+            <span><img src="../../../img/okverde42.png" alt=""/></span>
+            <span>Finalizado</span>
+            <!-- <div class="aceptarP" id="confir"><img src="../../../img/acep_norm.png" alt=""/></div>-->
+        </div>
+
+        <div id="parafondo" class="parafondooscurito">
+            <div id="buscar" style="width: 200px;z-index: 1"></div>
+        </div>
+    <center>
+        <div id="confirmar"></div>
+
+        <div id="panelLinea" class="panel primary-bordo" style="background-color: #e7e7e7;width: 70%; margin-top: 2%" >
+            <div class="panel-heading centrado">Descripcion del Pedido</div>
+            <div class="panel-body">
+                <form id="formLinea">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id Linea</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="id_detallepedidop" name="id_detallepedidop" type="text" class="fcontrolbordo input-sm" placeholder="Id" readonly="readonly">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Cod.Barra</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="codigo_producto" name="codigo_producto" type="text" class="fcontrolbordo input-sm" placeholder="Codigo de Barra" onKeyPress="return soloNumeros(event)">
+                        </div>
+
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdProducto" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="nombre_producto" name="nombre_producto" type="text" class="fcontrolbordo input-sm" placeholder="Nombre Producto" readonly="readonly">
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Precio</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="preciocompra_producto" name="preciocompra_producto" type="text" class="fcontrolbordo input-sm" placeholder="Costo" disabled="disabled">
+                        </div>
+                    </div>
+
+                    <div class="row oculto">
+                        <div class="col-md-1">
+                            <span>Producto</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="id_producto" name="id_producto" type="text" class="fcontrolbordo input-sm" placeholder="Id">
+                        </div>
+
+                    </div>
+
+
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Cantidad</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="cantidad_detallepedidop" name="cantidad_detallepedidop" type="text" class="fcontrolbordo input-sm derecha" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        
+                        <div class="col-md-2 oculto">
+                            <input id="cantidad_faltante" name="cantidad_faltante" value="0" type="text" class="fcontrolbordo input-sm derecha" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        <div class="col-md-2 oculto">
+                            <input id="cantidad_entrante" name="cantidad_entrante" type="text" class="fcontrolbordo input-sm derecha" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        
+                        <div class="col-md-2 oculto">
+                            <input id="id_deposito" name="id_deposito" type="text" class="fcontrolbordo input-sm derecha" value="1" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        <div class="col-md-2 oculto">
+                            <input id="estado_pedidos" name="estado_pedidos" type="text" class="fcontrolbordo input-sm derecha" value="PENDIENTE" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="row oculto">
+                        <div class="col-md-4">   
+                        </div>
+                        <div class="col-md-1">
+                            <span>Sub Total</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="preciototal_venta" name="preciototal_detallepedidop" type="text" class="fcontrolbordo input-sm" placeholder="Subtotal" onkeypress="return pretotal(this)" readonly="readonly">
+                        </div>
+                        <div class="col-md-3">   
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonCambiaLinea" type="button" class="btn bordo bordo1 btn-sm" onclick="modificarPedidoDetalle()">CAMBIAR <span class="glyphicon glyphicon-edit"></span></button>
+                <button id="botonAgregaLinea" type="button" class="btn bordo bordo1 btn-sm">AGREGAR <span class="glyphicon glyphicon-floppy-disk"></span></button>
+                <button id="botonSalirLinea" type="button" class="btn bordo bordo1 btn-sm">SALIR <span class="glyphicon glyphicon-off"></span></button>
+            </div>
+        </div>
+    </center>
+    <center>  <div id="panelPrograma" style="background-color: #e7e7e7;width: 70%; margin-top: 2%">
+            <div id="panelDiseño" class="panel primary-bordo">
+                <div class="panel-heading centrado">Pedido a Proveedores</div>
+                <div class="panel-body">
+                    <form id="formPrograma">
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span> Pedido N° </span>
+                            </div>
+                            <div class="col-md-2">
+                                <input id="id_pedidoproveedor" value="0" name="id_pedidoproveedor" type="text" class="fcontrolbordo input-sm" placeholder="Id" onKeyPress="return soloNumeros(event)">
+                            </div>
+                            <div class="col-md-1">
+                                <button id="botonBuscarIdPedidoProveedor" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                            <div class="col-md-1" style="position: absolute;left: 45%">
+                                <span><img src="../../../img/camionProveedor.png" alt=""/></span>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="panelcliente">
+                            <div class="row">
+                                <div class="col-md-1 oculto">
+                                    <span>Cliente</span>
+                                </div>
+                                <div class="col-md-1 oculto">
+                                    <input id="id_persona" name="id_persona" type="text" class="fcontrolbordo input-sm" placeholder="Id">
+                                </div>
+
+
+
+                                <div class="col-md-3"><span>Ruc</span>
+                                    <input id="ruc_persona" name="ruc_persona" type="text" class="fcontrolbordo input-sm centrado" placeholder="Ruc" onKeyPress="return soloNumeros(event)">
+                                </div>
+
+                                <div class="col-md-1">
+
+                                </div>
+                                <div class="col-md-3"><span>Proveedor</span>
+                                    <input id="nombre_persona" name="nombre_persona" type="text" class="fcontrolbordo input-sm centrado" placeholder="Proveedor" disabled="disabled">
+                                </div>
+
+                                <div class="col-md-1">
+
+                                </div>
+                                <div class="col-md-4"> <span>Correo</span>
+                                    <input id="correo_persona" name="ruc_persona" type="text" class="fcontrolbordo input-sm centrado" placeholder="@gmail" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                        <a style="color: red" id='validacion'></a>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span> Fecha</span>
+                            </div>
+                            <div class="col-md-3">
+                                <input id="fecha_pedidop" name="fecha_pedidop" type="date" class="fcontrolbordo 
+                                       input-sm" >                         
+                            </div>
+
+                            <div class="col-md-2">
+                                <span> Estado</span>
+                            </div>
+                            <div class="col-md-3">
+                                <input id="estado_pedidop" name="estado_pedidop" type="text" class="fcontrolbordo input-sm"   value="PENDIENTE"   disabled="disabled">                                    
+                            </div>
+                        </div>
+                        <!--  <div style="font-size: 20px;text-align: center"><b>DETALLE AJUSTES</b></div> -->
+                    </form>
+                    <br>
+                    <div id="detalle" hidden="">
+                        <h3> Productos Pedidos</h3>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th><center>Pedido N°</center></th>
+                            <th><center>Cod Barra</center></th>
+                            <th><center>Descripcion</center></th>
+                            <th><center>Cantidad</center></th>
+                            <th class="centrado"><button id="mas" onclick="agregarLineas()" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            </thead>
+                            <tbody id="contenidoDetalle">
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+                <div class="panel-footer centrado">
+                    <button id="botonAgregar" type="button" class="btn bordo bordo1 btn-sm">Agregar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+                    <button id="botonLimpiar" onclick="limpiarFormulario()" type="button" class="btn bordo bordo1 btn-sm">Limpiar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+                    <button id="botonImprimir" type="button" class="btn bordo bordo1 btn-sm" data-toggle="modal" data-target="#confirmarpedido">Confirmar Pedido <span class="glyphicon glyphicon-print"></span></button>
+                    <button id="botonEliminar" type="button" class="btn bordo bordo1 btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Cancelar Pedido <span class="glyphicon glyphicon-trash"></span></button>
+                    <button id="botonSalir" type="button" class="btn bordo bordo1 btn-sm">Salir <span class="glyphicon glyphicon-off"></span></button>
+                </div>
+            </div>
+
+        </div>
+    </center>
+    <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    Está seguro de eliminar estos datos?
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn bordo bordo1 btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmarEliminarLinea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabelLinea">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    Está seguro de eliminar el pedido?
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlertLinea" type="button" class="btn bordo bordo1 btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmarpedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 400px">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabelLinea">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body centrado">
+                    Enviar pedido al proveedor o Imprimir ??
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEnviar" type="button" class="btn bordo bordo1 btn-sm">Enviar Pedido</button>
+                    <button id="botonImpri" type="button" class="btn bordo bordo1 btn-sm">Imprimir Pedido</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+                                verificarSesion(true);
+                                $("#fecha_pedidop").ready(function () {
+                                    console.log(fecha());
+                                });
+                                $("#botonImprimir").prop('disabled', true);
+                                $("#botonEliminar").prop('disabled', true);
+                                $("#buscar").css("display", "none");
+                                $("#panelLinea").css("display", "none");
+                                $("#id_pedidoproveedor").focus();
+                                $("#id_pedidoproveedor").select();
+                                document.getElementById("botonCambiaLinea").style.display = "none";
+                                //   buscarIdPedidoProveedor();
+                                //siguienteCampo("#id_ajuste", "#id_proveedor", false);
+
+                                //siguienteCampo("#id_producto", "#cantidad_productoajuste", false);
+
+                                if ($("#id_pedidoproveedor").val() === "0") {
+                                    // siguienteCampo("#id_proveedor", "#botonAgregar", false);
+                                } else {
+
+                                    // siguienteCampo("#id_proveedor", "#botonModificar", false);
+                                }
+
+                                //   buscarIdUsuarioClave();
+
+                                $("#id_pedidoproveedor").focusout(function (event) {
+                                    if ($("#id_pedidoproveedor").val() === "") {
+                                        $("#id_pedidoproveedor").val("0");
+                                    }
+                                    buscarIdPedidoProveedor();
+                                    $("#id_pedidoproveedor").val("0");
+                                });
+
+
+                                /* $("#id_producto").focusout(function (event) {
+                                 if ($("#id_producto").val() === "") {
+                                 $("#id_producto").val("0");
+                                 }
+                                 buscarIdProducto();
+                                 });*/
+                                $("#codigo_producto").focusout(function (event) {
+                                    if ($("#codigo_producto").val() === "") {
+                                        $("#codigo_producto").val("0");
+                                    }
+                                    buscarCodigoProducto();
+                                });
+                                $("#botonBuscarIdPedidoProveedor").on('click', function () {
+                                    $("#buscar").load("buscar.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                    $("#parafondo").fadeIn("slow");
+                                    $("#buscar").css("width", "100%");
+
+                                });
+                                /*         $("#botonBuscarIdProveedor").on('click', function () {
+                                 $("#buscar").load("buscarProveedores.html");
+                                 $("#buscar").fadeIn("slow");
+                                 $("#panelPrograma").fadeOut("slow");
+                                 });*/
+
+                                /*    $("#botonBuscarIdUsuario").on('click', function () {
+                                 $("#buscar").load("buscarUsuarios.html");
+                                 $("#buscar").fadeIn("slow");
+                                 $("#panelPrograma").fadeOut("slow");
+                                 });*/
+                                /*   $("#botonBuscarIdProducto").on('click', function () {
+                                 $("#buscar").load("buscarProducto.html");
+                                 $("#buscar").fadeIn("slow");
+                                 $("#panelLinea").fadeOut("slow");
+                                 });*/
+
+                                $("#cantidad_detallepedidop").keyup(function (event) {
+                                    if ($("#cantidad_detallepedidop").val() !== "" && $("#preciocompra_producto").val() !== "") {
+                                        pretotal(this);
+                                    }
+                                });
+
+                                $("#ruc_persona").keyup(function (event) {
+                                    document.getElementById("validacion").innerHTML = "";
+                                });
+                                $("#ruc_persona").focusout(function (event) {
+                                    if ($("#ruc_persona").val() === "") {
+
+                                    }
+                                    document.getElementById("validacion").innerHTML = "";
+
+
+                                });
+
+
+                                $("#cierraRe").on('click', function () {
+                                    cerrarRe();
+                                });
+
+                                $("#botonAgregar").on('click', function () {
+                                    if (validarFormulario()) {
+                                        agregarPedidoProveedor();
+                                    }
+                                });
+                                $("#botonModificar").on('click', function () {
+
+                                    modificarPedidoProveedor();
+
+                                });
+                                $("#botonEliminarAlert").on('click', function () {
+                                    $('#confirmarEliminar').modal('hide');
+                                    eliminarPedido();
+                                });
+                                $("#botonSalir").on('click', function () {
+                                    location.href = "../../../menu.html";
+                                });
+
+                                $("#botonAgregarLinea").on('click', function () {
+                                    if (validarFormularioPedidoProveedor()) {
+                                        SumarPedidoDetalle();
+                                    }
+                                });
+                                $("#botonAgregaLinea").on('click', function () {
+                                    if (validarFormularioPedidoProveedor()) {
+                                        AgregarPedidoDetalle();
+                                    }
+                                });
+                                $("#botonModificarLinea").on('click', function () {
+
+                                    modificarPedidoDetalle();
+
+
+                                });
+
+
+
+                                /*$("#botonEliminarAlertLinea").on('click', function () {
+                                 eliminarAjusteDetalle();
+                                 $('#confirmarEliminarLinea').modal('hide');
+                                 });*/
+                                $("#botonSalirLinea").on('click', function () {
+                                    $("#panelLinea").fadeOut("slow");
+                                    $("#panelPrograma").fadeIn("slow");
+                                    $("#codigo_producto").prop('disabled', false);
+                                    limpiarFormularioLinea();
+                                });
+
+                                $("#botonconf").on('click', function () {
+                                    location.reload();
+                                });
+
+                                $("#confir").on('click', function () {
+                                    cerrarN();
+                                });
+                                //verificarSesion(true);
+                                $("#desde_id").focus();
+                                //siguienteCampo("#desde_id", "#hasta_id", false);
+                                $("#botonImpri").on('click', function () {
+                                    setTimeout('location.reload()', 900);
+                                    var d = $("#id_pedidoproveedor").val();
+
+
+                                    var jsp = "jsp/tablas.jsp";
+                                    window.open(jsp + "?d=" + d);
+
+
+                                });
+
+                                $("#botonSalir").on('click', function () {
+                                    location.href = "../../../menu.html";
+                                });
+
+                                /*      document.onkeydown = function (e) {
+                                 tecla = (document.all) ? e.keyCode : e.which;
+                                 //   alert(tecla);
+                                 if (tecla = 116) return false
+                                 
+                                 }
+                                 
+                                 function NoBack() {
+                                 history.go(1);
+                                 }*/
+
+                                $("#codigo_producto").keypress(function (event) {
+                                    var keycode = (event.keycode ? event.keycode : event.which);
+                                    if (keycode == "13") {
+                                        $("#buscar").load("buscarProducto.html");
+                                        $("#buscar").fadeIn("slow");
+                                        $("#parafondo").fadeIn("slow");
+                                        $("#buscar").animate({opacity: "0.9", left: "+=50", width: "800", position: "absolute"}, 900)
+
+                                        return false;
+                                    }
+                                });
+
+                                $("#ruc_persona").keypress(function (event) {
+                                    var keycode = (event.keycode ? event.keycode : event.which);
+                                    if (keycode == "13") {
+                                        $("#buscar").load("buscarPersona.html");
+                                        $("#buscar").fadeIn("slow");
+                                        $("#parafondo").fadeIn("slow");
+                                        // $("#formPrograma").fadeOut("slow");
+
+                                        $("#buscar").animate({opacity: "0.9", left: "+=50", width: "800", position: "absolute"}, 1900)
+                                        //.animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'})
+                                        //.animate({opacity: "1", left: "0", width: "260"}, "slow")
+                                        //.animate({top: "0", width: "500", fontSize: '1.2em'}, "fast")
+                                        // .slideUp()
+                                        //.slideDown(1800)
+                                        return false;
+                                    }
+                                });
+
+                                $("#id_persona").focusout(function (event) {
+                                    if ($("#id_persona").val() !== "") {
+                                        buscarIdPersona();
+                                    }
+
+                                });
+                                
+                                  $("#botonLimpiar").focusout(function (event) {
+                                   limpiarFormulario();
+                                });
+    </script>
+</body>
+</html>

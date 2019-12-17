@@ -1,0 +1,108 @@
+<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+
+<center>
+    <div id="panelBuscar" class="panel primary-bordo" style="background-color: #e7e7e7">
+        <div class="panel-heading centrado">Buscar Personas</div>
+        <div class="panel-body" style="background-color: #e7e7e7; height: 550px">
+            <form  id="formBuscar">
+                <input type="hidden" id="bpagina" name="bpagina" value="1" >
+                <div class="row">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-1">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="bnombre" name="bnombre" type="text" class="fcontrolbordo input-sm" placeholder="Nombre" />
+                    </div>
+                    <div class="col-md-2">
+
+                        <button id="botonBuscar" type="button" class="btn bordo bordo1 btn-sm">Buscar <span  class="glyphicon glyphicon-search"></span></button>
+                        
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div id="resultado">
+                <table class="table table-bordered table-striped table-hover" style="overflow: auto; height: 380px">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Ruc</th>
+                            <th>Tipo de Persona</th>
+
+                            <!--th>Id Iva</th-->
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="contenidoBusqueda">
+
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pager">
+                        <li id="anterior"><a href="#" class="textobordo"><span aria-hidden="true" class="textobordo">&larr;</span>Anterior</a></li>
+                        <li id="siguiente"><a href="#" class="textobordo">Siguiente<span aria-hidden="true" class="textobordo">&rarr;</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonSalirBuscar" type="button" class="btn bordo bordo1 btn-sm">Salir</button>
+            <button id="botonAgregarPersona" type="button" class="btn bordo bordo1 btn-sm">Agregar</button>
+        </div>
+    </div>
+</center>
+<script>
+    
+    buscarNombrePersona();
+    $("#bnombre").focus();
+    // siguienteCampo("#bnombre", "#botonBuscar", false);
+    $("#bnombre").keyup("click", function () {
+        $("#contenidoBusqueda").html("");
+        $("#bpagina").val("1");
+        buscarNombrePersona();
+        $("#bnombre").focus();
+    });
+    $("#anterior").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        if (pag > 1) {
+            $("#bpagina").val(pag - 1);
+        }
+        buscarNombrePersona();
+    });
+    $("#siguiente").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        $("#bpagina").val(pag + 1);
+        buscarNombrePersona();
+    });
+    
+     $("#botonAgregarPersona").on('click', function () {
+        miventana =  window.open("../../Archivos/personas/index.html","tete","width=900,left=200, top= 200");
+       miventana.resizeTo(900,700);
+    });
+
+    $("#botonSalirBuscar").on("click", function () {
+        //   $("#buscar").fadeOut("slow");
+      //  $("#panelLinea").fadeIn("slow");
+         $("#parafondo").fadeOut("slow");
+        $("#buscar").animate({opacity: "10", left: "+=50", width: "10", position: "absolute"})
+        //.animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'})
+        //.animate({opacity: "1", left: "0", width: "260"}, "slow")
+        //.animate({top: "0", width: "500", fontSize: '1.2em'}, "fast")
+        // .slideUp()
+        //.slideDown(1800) 
+        $("#id_persona").focus();
+        return false;
+       
+    });
+</script>

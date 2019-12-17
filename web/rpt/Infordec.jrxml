@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Infordec" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ede7b0d6-93d1-4a9f-a929-d5612bdb4f8c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from facturacompras v, pedidoproveedores c, personas p where v.id_pedidoproveedor=c.id_pedidoproveedor and c.id_persona=p.id_persona
+and fecha_compra >= $P{fecha} and fecha_compra <= $P{fechad}  AND estado_compra='COBRADO' order by id_compra]]>
+	</queryString>
+	<field name="id_compra" class="java.lang.Integer"/>
+	<field name="fecha_compra" class="java.sql.Date"/>
+	<field name="numero_factura" class="java.lang.Integer"/>
+	<field name="estado_compra" class="java.lang.String"/>
+	<field name="condicion_compra" class="java.lang.String"/>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="totalpagado_compra" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="nombre_persona" class="java.lang.String"/>
+	<field name="apellido_persona" class="java.lang.String"/>
+	<field name="direccion_persona" class="java.lang.String"/>
+	<field name="telefono_persona" class="java.lang.String"/>
+	<field name="correo_persona" class="java.lang.String"/>
+	<field name="ruc_persona" class="java.lang.String"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="id_tipopersona" class="java.lang.Integer"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="2ba773b4-59a7-4263-8b4d-da35c3df33a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numero_factura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="1" width="111" height="20" uuid="9cd7bdec-143a-4003-b058-31bbccc9f46e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estado_compra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="a090f97d-ebc8-4aec-906d-6b0ff7b5c41b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{condicion_compra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="444" y="1" width="111" height="20" uuid="4ccd530f-9c89-467a-ae49-cdce48b35576"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalpagado_compra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="766203c6-1c0f-4939-97a2-09dea20ce839"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_persona}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

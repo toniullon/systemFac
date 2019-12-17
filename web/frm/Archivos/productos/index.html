@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Productos</title>
+        <link rel="icon" type="image/png" href="../../../favicon.png"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body background="../../../img/fondo 4 grande.jpg" style="background-size: 100%"> <!--background="../../../img/supermercado1.1.jpg"-->
+        <div id="confirmar"></div>
+        <div id="buscar"></div>
+    <center><div id="panelPrograma" class="panel primary-bordo" style="background-color: #d5d5d5;width: 85%;margin-top: 5%">
+            <div class="panel-heading centrado" >Productos<span
+                    id="susuario_usuario"></span></div>
+            <div class="panel-body">
+                <form id="formPrograma">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="id_producto" name="id_producto" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="Id" onkeypress="return SoloNumeros(event)">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdProducto" type="button" class="btn bordo bordo1 btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <span>Nombre</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="nombre_producto" name="nombre_producto" type="text" class="fcontrolbordo input-sm" placeholder="Nombre" onkeyup="this.value = this.value.toUpperCase()">
+                            <a style="color: red" id='nomb'></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Descripcion</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="descripcion_producto" name="descripcion_producto" type="text" class="fcontrolbordo input-sm" placeholder="Descripcion" onkeyup="this.value = this.value.toUpperCase()">
+                            <a style="color: red" id='descrip'></a>
+                        </div>
+
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_marca" name="id_marca" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="Id" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='marca'></a>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdMarca" type="button" class="btn bordo bordo1 btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Marca</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="nombre_marca" name="nombre_marca" type="text" class="fcontrolbordo input-sm" placeholder="Marca" readonly="readonly">
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_medida" name="id_medida" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="Id" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='medida'></a>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdMedida" type="button" class="btn bordo bordo1 btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Medida</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="nombre_medida" name="nombre_medida" type="text" class="fcontrolbordo input-sm" placeholder="Medida" readonly="readonly">
+                        </div>
+                        <div class="col-md-0">   
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_rubro" name="id_rubro" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="Id" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='rubro'></a>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdRubro" type="button" class="btn bordo bordo1 btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Rubro</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="nombre_rubro" name="nombre_rubro" type="text" class="fcontrolbordo input-sm" placeholder="Rubro" readonly="readonly">
+                        </div>
+                        <div class="col-md-6">   
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Stock Minimo</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="stockmin_producto" name="stockmin_producto" type="text" class="fcontrolbordo input-sm" placeholder="Stock minimo" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='min'></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Stock Maximo</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="stockmax_producto" name="stockmax_producto" type="text" class="fcontrolbordo input-sm" placeholder="Stock maximo" onkeyup="this.value = this.value.toUpperCase()" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='max'></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Codigo</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="codigo_producto" name="codigo_producto" type="text" class="fcontrolbordo input-sm" placeholder="Codigo" onkeyup="this.value = this.value.toUpperCase()">
+                            <a style="color: red" id='codigo'></a>
+                        </div>
+                        <div class="col-md-3">   
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Costo de compra</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="preciocompra_producto" name="preciocompra_producto" type="text" class="fcontrolbordo input-sm" placeholder="Precio" onkeypress="return SoloNumeros(event)" onkeyup="formatearNumero(this, this.value.charAt(this.value.length - 1))">
+                            <a style="color: red" id='compra'></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Precio de venta</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="precioventa_producto" name="precioventa_producto" type="text" class="fcontrolbordo input-sm" placeholder="Precio" onkeypress="return SoloNumeros(event)" onkeyup="formatearNumero(this, this.value.charAt(this.value.length - 1))">
+                            <a style="color: red" id='venta'></a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Iva producto</span>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="iva_producto" id="iva_producto" class="fcontrolbordo input-sm">
+                                <option selected value="0">Seleccionar</option>
+                                <option value="0">Exentas</option> 
+                                <option value="10">10%</option> 
+                                <option value="5">5%</option> 
+
+                            </select>
+                        </div>
+                        <div class="col-md-3">   
+                        </div>
+                    </div>
+                    <!--div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="id_iva" name="id_iva" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="Id" onkeypress="return SoloNumeros(event)">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdIva" type="button" class="btn bordo bordo1 btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-8">   
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>IVA</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="nombre_iva" name="nombre_iva" type="text" class="fcontrolbordo input-sm" placeholder="porcentaje" onkeyup="this.value = this.value.toUpperCase()" disabled="disabled">
+                        </div>
+                        <div class="col-md-9">   
+                        </div>
+                    </div-->
+                </form>
+            </div>
+            <div class="panel-footer centrado" >
+                <button id="botonNuevo" type="button" class="btn bordo bordo1 btn-sm">Nuevo</button>
+                <button id="botonAgregar" type="button" class="btn bordo bordo1 btn-sm">Agregar</button>
+                <button id="botonModificar" type="button" class="btn bordo bordo1 btn-sm">Modificar</button>
+                <button id="BotonEliminar" type="button" class="btn bordo bordo1 btn-sm" data-toggle="modal"
+                        data-target="#confirmarEliminar">Eliminar</button>
+                <button id="botonSalir" type="button" class="btn bordo bordo1 btn-sm">Salir</button>
+            </div>
+        </div></center>
+    <div id="mensajes" class="well well-sm centrado">Mensaje del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">
+                            &times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn bordo bordo1 btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+                                //verificarSesion(true);
+                                $("#buscar").css("display", "none");
+                                $("#id_producto").focus();
+                                siguienteCampo("#id_producto", "#nombre_producto", false);
+                                $("#id_producto").focusout(function (event) {
+                                    if ($("#id_producto").val() === "") {
+                                        $("#id_producto").val("0");
+                                    }
+                                    buscarIdProducto();
+                                });
+
+                                $("#botonBuscarIdProducto").on('click', function () {
+                                    $("#buscar").load("buscar.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#nombre_producto").focusout(function (event) {
+                                    if ($("#nombre_producto").val() !== "") {
+                                        buscarProducto();
+                                    }
+
+                                });
+
+                                /*$("#codigo_producto").blur(function () {
+                                 if ($("#codigo_producto").val() !== "") {
+                                 buscarCodigoProducto();
+                                 }
+                                 
+                                 });*/
+
+                                $("#nombre_producto").blur(function () {
+                                    if ($("#nombre_producto").val() !== "") {
+                                        buscarProducto();
+                                    }
+
+                                });
+
+                                $("#id_marca").focusout(function (event) {
+                                    if ($("#id_marca").val() !== "") {
+                                        buscarIdMarca();
+                                    }
+
+                                });
+
+                                $("#id_medida").focusout(function (event) {
+                                    if ($("#id_medida").val() !== "") {
+                                        buscarIdMedida();
+                                    }
+
+                                });
+
+                                $("#id_rubro").focusout(function (event) {
+                                    if ($("#id_rubro").val() !== "") {
+                                        buscarIdRubro();
+                                    }
+
+                                });
+
+                                $("#nombre_producto").keyup(function (event) {
+                                    document.getElementById("nomb").innerHTML = "";
+                                });
+                                $("#descripcion_producto").keyup(function (event) {
+                                    document.getElementById("descrip").innerHTML = "";
+                                });
+                                $("#preciocompra_producto").keyup(function (event) {
+                                    document.getElementById("compra").innerHTML = "";
+                                });
+                                 $("#codigo_producto").keyup(function (event) {
+                                    document.getElementById("codigo").innerHTML = "";
+                                });
+                                $("#stockmin_producto").keyup(function (event) {
+                                    document.getElementById("min").innerHTML = "";
+                                });
+                                $("#stockmax_producto").keyup(function (event) {
+                                    document.getElementById("max").innerHTML = "";
+                                });
+                                 $("#id_marca").keyup(function (event) {
+                                    document.getElementById("marca").innerHTML = "";
+                                });
+                                $("#id_rubro").keyup(function (event) {
+                                    document.getElementById("rubro").innerHTML = "";
+                                });
+                                $("#id_medida").keyup(function (event) {
+                                    document.getElementById("medida").innerHTML = "";
+                                });
+                                 $("#codigo_producto").keyup(function (event) {
+                                    document.getElementById("codigo").innerHTML = "";
+                                });
+                                $("#precioventa_producto").keyup(function (event) {
+                                    document.getElementById("venta").innerHTML = "";
+                                });
+
+                                $("#botonBuscarIdMarca").on('click', function () {
+                                    $("#buscar").load("buscarMarca.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#botonBuscarIdMedida").on('click', function () {
+                                    $("#buscar").load("buscarMedida.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#botonBuscarIdRubro").on('click', function () {
+                                    $("#buscar").load("buscarRubro.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#botonNuevo").on('click', function () {
+
+                                    $("#id_producto").val("0");
+                                    $("#nombre_producto").focus();
+                                    buscarIdProducto();
+
+                                });
+
+                                $("#botonAgregar").on('click', function () {
+                                    if (validarFormulario()) {
+                                        agregarProducto();
+                                    }
+                                });
+                                $("#botonModificar").on('click', function () {
+                                    if (validarFormulario()) {
+                                        modificarProducto();
+                                    }
+                                });
+                                $("#botonEliminarAlert").on('click', function () {
+                                    eliminarProducto();
+                                    $('#confirmarEliminar').modal('hide');
+                                });
+                                $("#botonSalir").on('click', function () {
+                                    location.href = "../../../menu.html";
+                                });
+
+    </script>
+</body>
+</html>

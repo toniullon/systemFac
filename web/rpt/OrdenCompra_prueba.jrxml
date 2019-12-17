@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OrdenCompra_prueba" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="83d47b0b-aa3f-4698-aa8d-54fa555133e5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpedidod" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from detallecompras dv
+left join facturacompras v on v.id_compra=dv.id_compra
+left join productos p on p.id_producto=dv.id_producto
+where v.id_compra=$P{idpedidod}]]>
+	</queryString>
+	<field name="id_detallecompra" class="java.lang.Integer"/>
+	<field name="id_producto" class="java.lang.Integer"/>
+	<field name="cantidad_detallecompra" class="java.lang.String"/>
+	<field name="id_compra" class="java.lang.Integer"/>
+	<field name="preciototal_detallecompra" class="java.lang.Integer"/>
+	<field name="fecha_compra" class="java.sql.Date"/>
+	<field name="numero_factura" class="java.lang.Integer"/>
+	<field name="estado_compra" class="java.lang.String"/>
+	<field name="condicion_compra" class="java.lang.String"/>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="nombre_producto" class="java.lang.String"/>
+	<field name="codigo_producto" class="java.lang.String"/>
+	<field name="descripcion_producto" class="java.lang.String"/>
+	<field name="precioventa_producto" class="java.lang.Integer"/>
+	<field name="preciocompra_producto" class="java.lang.Integer"/>
+	<field name="stockmin_producto" class="java.lang.Integer"/>
+	<field name="stockmax_producto" class="java.lang.Integer"/>
+	<field name="id_marca" class="java.lang.Integer"/>
+	<field name="id_rubro" class="java.lang.Integer"/>
+	<field name="id_medida" class="java.lang.Integer"/>
+	<field name="iva_producto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="60" splitType="Stretch"/>
+	</detail>
+</jasperReport>

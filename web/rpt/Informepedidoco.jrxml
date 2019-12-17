@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informepedidoco" language="groovy" pageWidth="595" pageHeight="697" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f6469ea5-103e-4a0a-99aa-7e9c4017dd95">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pedidoproveedores where fecha_pedidop >=$P{fecha}
+AND fecha_pedidop <=$P{fechad} order by id_pedidoproveedor]]>
+	</queryString>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="109" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#006666" uuid="381d1ee2-b577-4c1a-8e27-124cce50e8f1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="346" y="59" width="105" height="20" forecolor="#FFFFFF" uuid="d0c5b910-d617-45bf-b347-1f3e37acd181"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Busqueda:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="307" height="36" forecolor="#FFFFFF" uuid="3bad0659-e28e-498c-bb80-f08065ac9679"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Informes de Pedidos Compras]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="89" width="138" height="20" uuid="34d38150-de5f-441c-9bc0-897c2d01752c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="138" y="89" width="138" height="20" uuid="ede616f9-1c65-4728-9070-1e51ca2c9379"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="89" width="138" height="20" uuid="e8a5585e-d614-4599-a539-e94aa9776b4b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="414" y="89" width="138" height="20" uuid="9f5e19f8-ad54-42a8-a5bc-e69b091ad530"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="89" width="138" height="20" uuid="575a5b6b-e309-41a2-9053-b912ce68412b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Pedido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="89" width="138" height="20" uuid="69356ff3-1129-4359-af38-539a1973828a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="89" width="138" height="20" uuid="697f1580-f977-4c9a-ab16-a2711257e066"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="89" width="138" height="20" uuid="267a55e4-ddc4-4e53-ab29-b2087c59cb52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="451" y="59" width="100" height="20" uuid="24bccba6-bec9-4f8a-a66d-866b8daa76ab"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_pedidop}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="412">
+			<rectangle>
+				<reportElement x="0" y="0" width="138" height="302" uuid="76817cd6-441e-4b8c-8bd7-efc8ec985dd6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="138" y="0" width="138" height="302" uuid="604516cd-2111-4243-b375-8364fbb9e1b8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="0" width="138" height="302" uuid="aa314a1d-a295-47ed-8986-0602fa75b5d4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="414" y="0" width="138" height="302" uuid="931bc0ee-372d-48a1-bbd7-2c76acce707c"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="100" uuid="928eb889-1bc0-44af-8a72-fb0807df48d6"/>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechad">
+					<subreportParameterExpression><![CDATA[$P{fechad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\Infordepco.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+</jasperReport>

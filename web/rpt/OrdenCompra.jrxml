@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OrdenCompra" pageWidth="595" pageHeight="481" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41523f52-bc97-464e-9699-3058da0e8fe5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["J:\\trabajo de ferreteria Andrea Cristina\\despensa\\src\\informes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DESDE" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pedido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pedidoproveedores p, personas per where p.id_persona=per.id_persona and id_pedidoproveedor= $P{DESDE}]]>
+	</queryString>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="nombre_persona" class="java.lang.String"/>
+	<field name="apellido_persona" class="java.lang.String"/>
+	<field name="direccion_persona" class="java.lang.String"/>
+	<field name="telefono_persona" class="java.lang.String"/>
+	<field name="correo_persona" class="java.lang.String"/>
+	<field name="ruc_persona" class="java.lang.String"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="id_tipopersona" class="java.lang.Integer"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="129" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="69" backcolor="#006666" uuid="6638195a-6232-4072-a319-bf681d75730f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="343" height="69" forecolor="#FFFFFF" uuid="3b99ea6f-a3d9-4999-9aea-1293f0408b27"/>
+				<textElement verticalAlignment="Middle">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pedido Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="13" width="85" height="20" forecolor="#FFFFFF" uuid="fbdf72b4-b8e5-41ab-921f-320ac85343c6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="446" y="13" width="100" height="20" backcolor="#006666" uuid="6c0d982d-7553-4f70-9220-2b47d0d43bf4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="361" y="33" width="85" height="20" forecolor="#FFFFFF" uuid="5422a2f8-5282-41e8-8a3e-a64c05f1cd5a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° de pedido]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="446" y="33" width="100" height="20" backcolor="#006666" uuid="7212b125-9409-4c5b-ae8e-babe076e10f3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="76" width="328" height="23" uuid="ab096f92-c6bf-492b-a037-d34c8485d5dc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="79" width="69" height="20" uuid="40bbb383-b371-4ff9-b9c1-ed5a5bb8835a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="375" y="76" width="180" height="23" uuid="b5224420-93a5-4421-822d-71f5aaec0e7f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="386" y="76" width="43" height="20" uuid="82c1f225-2aa9-4229-93d4-7cef7274bdc6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="109" width="125" height="20" uuid="c26cf85a-b8b5-4719-b60c-e0d21bb317cf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="109" width="125" height="20" uuid="4791831b-dacc-4f3d-b9f9-09de4bc6ed31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LINEA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="125" y="109" width="117" height="20" uuid="690c8312-401b-407c-a843-6325a5183e02"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="109" width="313" height="20" uuid="b1da224d-5efc-4b8a-9b65-699c8c7bfb5f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="125" y="109" width="117" height="20" uuid="17826d34-0ce9-43c0-b515-85f6e75e1b4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="109" width="313" height="20" uuid="8a7a23ab-6eb0-42e0-8755-3618d020c203"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESCRIPCION DEL PRODUCTO]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="446" y="13" width="100" height="20" uuid="6d8f033a-7744-4e06-9ca8-db483d6be91f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_pedidop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="79" width="100" height="20" uuid="777028c9-1472-4d92-96f7-10f73c15e3ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_persona}.toUpperCase()+" "+$F{apellido_persona}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="79" width="126" height="20" uuid="0185f19c-e267-4bd9-8df6-ee07a1a6488d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ruc_persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="33" width="100" height="20" uuid="459c6fc1-5f81-4f1b-8dd9-8f008ba1fbdd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_pedidoproveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="206" splitType="Stretch">
+			<rectangle>
+				<reportElement x="125" y="0" width="117" height="205" uuid="3c77373b-44ba-4ef4-9de9-51d129a029fc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="0" width="313" height="205" uuid="c34e00e6-9376-4d8f-b352-2f5d58e669bc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="125" height="205" uuid="cb345313-8275-4659-a3ff-e4e32ae621c8"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="100" uuid="7ff051a5-53d7-4df0-9fd0-751147312132"/>
+				<subreportParameter name="pedido">
+					<subreportParameterExpression><![CDATA[$P{DESDE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\report2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

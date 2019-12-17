@@ -1,0 +1,114 @@
+<!--<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+-->
+<div id="panelBuscar" class="panel primary-bordo">
+    <div class="panel-heading centrado">Buscador Compras</div>
+    <div id="panelBuscar">
+        <div class="panel-body">
+            <form id="formBuscar">
+                <input type="hidden" id="bpagina" name="bpagina" value="1" />
+                <div class="row">
+
+                    <div class="col-md-1">
+                        <span>DESDE</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="bnombre_compra" name="bnombre_compra" type="date" class="fcontrolbordo input-sm">
+                    </div>
+                    <div class="col-md-1">
+                        <span>HASTA</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="bnombre_comprad" name="bnombre_comprad" type="date" class="fcontrolbordo input-sm">
+                    </div>
+                    <div class="col-md-2">
+                        <button id="botonBuscar" type="button" class="btn bordo bordo1 btn-sm">Buscar <span
+                                class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    <div>
+                        <button id="botonconf" type="button" class="btn bordo bordo1 btn-sm">Imprimir <span
+                                class="glyphicon glyphicon-print"></span></button>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div id="resultado">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>N° Factura</th>
+
+                            <th>Proveedor</th>
+                            <th>Total Facturado</th>
+                            <th>Estado</th>
+                            <!--<th>Id</th>
+                           <th>Nombre Usuario</th>-->
+                        </tr>
+                    </thead>
+                    <tbody id="contenidoBusqueda">
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pager">
+                        <li id="anterior"><a href="#" class="textobordo"><span aria-hidden="true" class="textobordo">&larr;</span> Anterior</a></li>
+                        <li id="siguiente"><a href="#" class="textobordo">Siguiente <span aria-hidden="true" class="textobordo">&rarr;</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonSalir" type="button" class="btn bordo bordo1 btn-sm" onclick="ce()">Salir <span class="glyphicon glyphicon-off"></span></button>
+        </div>
+    </div>
+</div>
+<script>
+    /*$("#bnombre_compra").ready(function () {
+     console.log(fecha());
+     });*/
+
+    buscarNombreCompras();
+    $("#botonconf").hide();
+    $("#bnombre_compra").focus();
+    siguienteCampo("#bnombre_compra", "#botonBuscar", false);
+    $("#botonBuscar").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        $("#bpagina").val("1");
+        buscarNombreCompra();
+        $("#bnombre_compra").focus();
+    });
+    $("#anterior").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        if (pag > 1) {
+            $("#bpagina").val(pag - 1);
+        }
+        buscarNombreCompra();
+    });
+    $("#siguiente").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        $("#bpagina").val(pag + 1);
+        buscarNombreCompra();
+    });
+    function ce() {
+        $("#parafondo").fadeOut("slow");
+        $("#buscar").animate({opacity: "10", left: "+=50", width: "10", position: "absolute"})
+
+        return false;
+    }
+
+    $("#botonSalir").on('click', function () {
+        $("#buscar").fadeOut("slow");
+        $("#parafondo").fadeOut("slow");
+    });
+    $("#botonconf").on('click', function () {
+
+        var d = $("#bnombre_compra").val();
+        var c = $("#bnombre_comprad").val();
+
+        var jsp = "jsp/InformeCom.jsp";
+        window.open(jsp + "?d=" + d + "&c=" + c);
+
+    });
+</script>

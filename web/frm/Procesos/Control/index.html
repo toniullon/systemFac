@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> INVENTARIO </title>
+        <!---   <link rel="icon" type="image/png" href="../../../favicon.png" /> --->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body background="../../../img/fondo 4 grande.jpg" style="background-size: 100%">
+        <div id="buscar" style="position: absolute; z-index: 1"></div>
+
+    <center><div id="panelBuscar" class="panel primary-bordo" style="background-color: #e7e7e7; width: 70%">
+            <div class="panel-heading centrado">Control de Inventario</div>
+            <div class="panel-body">
+                <form  id="formBuscar">
+                    <input type="hidden" id="bpagina" name="bpagina" value="1" >
+                    <div class="row">
+
+
+                        <div class="col-md-2">
+                            <span>Producto</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="bnombre" name="bnombre" type="text" class="fcontrolbordo input-sm" placeholder="Nombre" />
+                        </div>
+
+                        <div class="col-md-3">
+                            <input id="bcodigo_producto" name="bcodigo_producto" type="text" class="fcontrolbordo input-sm" placeholder="Codigo de Barra" />
+                        </div>
+
+                    </div>
+                </form>
+                <br>
+                <div id="resultado" style="height:80%; width: 80%; font-size: 12px; overflow: auto;" align="center">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Producto</th>
+                                <th>Cod/Barra</th>
+                                <th>Stock</th>
+
+                                <th>Deposito</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenidoBusqueda">
+
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li id="anterior"><a href="#" class="textobordo"><span aria-hidden="true" class="textobordo">&larr;</span>Anterior</a></li>
+                            <li id="siguiente"><a href="#" class="textobordo">Siguiente<span aria-hidden="true" class="textobordo">&rarr;</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonSalir" type="button" class="btn bordo bordo1 btn-sm">Salir</button>
+            </div>
+        </div>
+    </center>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+
+        verificarSesion(true);
+        buscarNombreControl();
+        $("#Deposito").hide();
+        $("#bnombre").focus();
+        // siguienteCampo("#bnombre", "#botonBuscar", false);
+        $("#bnombre").keyup("click", function () {
+            $("#contenidoBusqueda").html("");
+            $("#bpagina").val("1");
+            buscarNombreControl();
+            $("#bnombre").focus();
+        });
+        $("#anterior").on("click", function () {
+            $("#contenidoBusqueda").html("");
+            var pag = parseInt($("#bpagina").val());
+            if (pag > 1) {
+                $("#bpagina").val(pag - 1);
+            }
+            buscarNombreControl();
+        });
+        $("#siguiente").on("click", function () {
+            $("#contenidoBusqueda").html("");
+            var pag = parseInt($("#bpagina").val());
+            $("#bpagina").val(pag + 1);
+            buscarNombreControl();
+        });
+
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+
+        $("#botonSalirLinea").on('click', function () {
+            //   alert("ERFG");
+            $("#Deposito").hide();
+            $("#panelBuscar").fadeIn("slow");
+        });
+        $("#bcodigo_producto").keyup('click', function () {
+            $("#contenidoBusqueda").html("");
+            $("#bpagina").val("1");
+            buscarNombreProductoC();
+            $("#bcodigo_producto").focus();
+
+        });
+
+    </script>
+</body>
+</html>

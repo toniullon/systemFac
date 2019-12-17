@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="db9a7213-07f9-438b-9950-045a06df754c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pedido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from detallepedidoproveedores d, pedidoproveedores a, productos p
+where d.id_pedidoproveedor=a.id_pedidoproveedor and d.id_producto=p.id_producto and a.id_pedidoproveedor=$P{pedido}]]>
+	</queryString>
+	<field name="id_detallepedidop" class="java.lang.Integer"/>
+	<field name="cantidad_detallepedidop" class="java.lang.String"/>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="id_producto" class="java.lang.Integer"/>
+	<field name="preciototal_detallepedidop" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="nombre_producto" class="java.lang.String"/>
+	<field name="codigo_producto" class="java.lang.String"/>
+	<field name="descripcion_producto" class="java.lang.String"/>
+	<field name="precioventa_producto" class="java.lang.Integer"/>
+	<field name="preciocompra_producto" class="java.lang.Integer"/>
+	<field name="stockmin_producto" class="java.lang.Integer"/>
+	<field name="stockmax_producto" class="java.lang.Integer"/>
+	<field name="id_marca" class="java.lang.Integer"/>
+	<field name="id_rubro" class="java.lang.Integer"/>
+	<field name="id_medida" class="java.lang.Integer"/>
+	<field name="iva_producto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="125" height="20" uuid="3c10f6aa-3c3b-4af4-8efc-a2c4078569e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_detallepedidop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="1" width="117" height="20" uuid="14d3088e-5c36-401b-9074-b35f92438af0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cantidad_detallepedidop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="1" width="313" height="20" uuid="f557892e-1876-4a56-9510-33bbede7edfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_producto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

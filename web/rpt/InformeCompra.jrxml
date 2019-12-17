@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InformeCompra" language="groovy" pageWidth="595" pageHeight="769" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ba096c0-25ac-4387-ae37-e9e1ef596eec">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="218"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from facturacompras v, pedidoproveedores c, personas p where v.id_pedidoproveedor=c.id_pedidoproveedor and c.id_persona=p.id_persona
+and fecha_compra >= $P{fecha} and fecha_compra <= $P{fechad} AND estado_compra='COBRADO' order by id_compra]]>
+	</queryString>
+	<field name="id_compra" class="java.lang.Integer"/>
+	<field name="fecha_compra" class="java.sql.Date"/>
+	<field name="numero_factura" class="java.lang.Integer"/>
+	<field name="estado_compra" class="java.lang.String"/>
+	<field name="condicion_compra" class="java.lang.String"/>
+	<field name="id_pedidoproveedor" class="java.lang.Integer"/>
+	<field name="totalpagado_compra" class="java.lang.Integer"/>
+	<field name="fecha_pedidop" class="java.sql.Date"/>
+	<field name="estado_pedidop" class="java.lang.String"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="nombre_persona" class="java.lang.String"/>
+	<field name="apellido_persona" class="java.lang.String"/>
+	<field name="direccion_persona" class="java.lang.String"/>
+	<field name="telefono_persona" class="java.lang.String"/>
+	<field name="correo_persona" class="java.lang.String"/>
+	<field name="ruc_persona" class="java.lang.String"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="id_tipopersona" class="java.lang.Integer"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<variable name="totalpagado_compra_1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalpagado_compra}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#006666" uuid="f5fc6f2b-28e1-4fc6-a7be-eac13b9f3bda"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="307" y="59" width="144" height="20" forecolor="#FFFFFF" uuid="7d761bab-a22f-4963-bb8f-91ba5d055d6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DESDE LA FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="307" height="36" forecolor="#FFFFFF" uuid="82fb0213-e2b5-4653-8a26-2a9c947204cc"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[ Informes de Compras]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="444" y="90" width="111" height="20" uuid="c2726abb-2579-4ffa-b817-ddeb9bbae6aa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="333" y="90" width="111" height="20" uuid="61138f2c-aca1-44fb-8713-42104de42b2b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="111" y="90" width="111" height="20" uuid="ed789f2a-020f-4eb1-ad98-a8d044476c73"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="333" y="91" width="111" height="20" uuid="9409748f-9288-4f4b-be8a-0986a89f52b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="90" width="111" height="20" uuid="a23d78b5-e203-4762-9d8a-e61860ff4996"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="222" y="90" width="111" height="20" uuid="9e6aa534-77cf-48fc-810d-f9d573ab0094"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="90" width="111" height="20" uuid="5e3dc766-e3b2-451f-90a5-1e4c5c00d357"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="90" width="111" height="20" uuid="7ace2baf-af6e-4cd2-adf1-e4ba223ad8da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="91" width="111" height="20" uuid="f7f701ef-6f0d-405b-9b47-40c8f322f764"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Condicion]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="455" y="59" width="100" height="20" uuid="439689da-e8cb-4b58-ad8d-40ad94f3052d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_compra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="307" y="36" width="144" height="20" forecolor="#FFFFFF" uuid="8fbc8d2c-3f4e-4f24-ab3b-e3b49aa88bde"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA/HORA DEL INFORME:]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="451" y="36" width="100" height="20" uuid="b2a6767c-80d7-4663-b58c-12d4a2e14c27"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="444" y="91" width="111" height="20" uuid="55624700-844c-4ed7-b2b2-2c8946deea80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Facturado]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="511">
+			<rectangle>
+				<reportElement x="111" y="0" width="111" height="511" uuid="9c2190fa-cc86-4b5b-b219-24ab1d2fd48d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="111" height="511" uuid="cd0ee4a0-2409-4a0a-af60-375da9740040"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="0" width="111" height="511" uuid="18b7181d-35cd-456b-a9a1-60cfaab4ed30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="333" y="0" width="111" height="511" uuid="2651ff27-d804-4eaa-925d-1a021d9a3034"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="222" y="0" width="111" height="511" uuid="d346e586-7aa9-4438-aca5-b7cbf5ba5afa"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="0" width="181" height="56" uuid="d8ce5aaf-4d43-4dad-906a-181ec6c66c6d"/>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechad">
+					<subreportParameterExpression><![CDATA[$P{fechad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\Infordec.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="107">
+			<rectangle>
+				<reportElement x="0" y="0" width="444" height="21" uuid="6e64b4da-4709-45ab-a71f-35a23fec9ec2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="0" width="111" height="21" uuid="96a54f4b-e894-4289-acd1-5bd11ca4ceb7"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement x="444" y="1" width="111" height="20" uuid="f0c22502-a25d-4de1-8f74-0a3a54b639df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{totalpagado_compra_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="100" height="20" uuid="1fb552bf-8cd3-4ac7-9236-e1943fe340c9"/>
+				<text><![CDATA[Total Pagado]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

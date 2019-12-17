@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ImformeVentas" language="groovy" pageWidth="595" pageHeight="769" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="baff6c21-f56b-447d-88c6-64e8f6de7c14">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="79"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from facturaventas v left join personas c on c.id_persona=v.id_persona
+WHERE fecha_venta >= $P{fecha} and fecha_venta <= $P{fechad}]]>
+	</queryString>
+	<field name="id_venta" class="java.lang.Integer"/>
+	<field name="fecha_venta" class="java.sql.Date"/>
+	<field name="id_persona" class="java.lang.Integer"/>
+	<field name="numero_venta" class="java.lang.Integer"/>
+	<field name="estado_venta" class="java.lang.String"/>
+	<field name="condicion_venta" class="java.lang.String"/>
+	<field name="id_pedidocliente" class="java.lang.Integer"/>
+	<field name="totalpagado_venta" class="java.lang.Integer"/>
+	<field name="nombre_persona" class="java.lang.String"/>
+	<field name="apellido_persona" class="java.lang.String"/>
+	<field name="direccion_persona" class="java.lang.String"/>
+	<field name="telefono_persona" class="java.lang.String"/>
+	<field name="correo_persona" class="java.lang.String"/>
+	<field name="ruc_persona" class="java.lang.String"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="id_tipopersona" class="java.lang.Integer"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<variable name="totalpagado_venta_1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalpagado_venta}]]></variableExpression>
+	</variable>
+	<variable name="totalpagado_venta_2" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalpagado_venta}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#006666" uuid="f723fb28-02d9-4abb-be14-f7913fab3248"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="262" y="59" width="152" height="20" forecolor="#FFFFFF" uuid="bc37b337-0c33-465f-a592-4f6a1ede8f14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[INFORMES DESDE LA FECHA FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="307" height="36" forecolor="#FFFFFF" uuid="8620e247-314a-4862-b6d6-a150f66d9af0"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[ Informes de Ventas]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="414" y="59" width="141" height="20" uuid="67adf595-7cb5-4978-afcb-40e6e2670bf8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="414" y="36" width="142" height="20" uuid="e43ba8e1-4d2b-48bb-89fe-5d1631f9916c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="262" y="36" width="152" height="20" forecolor="#FFFFFF" uuid="86df713b-7818-4711-98e9-d259c09b663e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA/HORA DE INFORME:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="92" width="111" height="20" uuid="43774f5e-87d8-4b75-9582-316fea446e1b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="111" y="92" width="111" height="20" uuid="592cadb6-0f85-4aeb-8a5a-83b2c1a230ce"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="222" y="92" width="111" height="20" uuid="f21ef47b-c506-439f-a8bf-684080987230"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="333" y="92" width="111" height="20" uuid="0b206a71-d08d-4584-9475-234cb7e1a2cc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="92" width="111" height="20" uuid="924c6380-2757-46d1-b9e0-c384496d50cd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="92" width="111" height="20" uuid="f33538ec-03f2-4db0-831f-ae6d28907517"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="92" width="111" height="20" uuid="07f5ffa8-29c7-4ed5-9b7b-e73b10e5fca2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="92" width="111" height="20" uuid="68f34637-8410-4427-b1d5-955c3d79cd18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Facturado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="92" width="111" height="20" uuid="d97f701f-f917-4def-8f57-b220603e7b98"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="92" width="111" height="20" uuid="bd5f5102-09f5-464d-914f-823f262fde7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Condicion]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="6"/>
+	</columnHeader>
+	<summary>
+		<band height="415">
+			<rectangle>
+				<reportElement x="0" y="387" width="443" height="20" uuid="245e62ae-8508-4d67-8af3-cb48be26cbfc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="387" width="111" height="20" uuid="448cc0d9-c28f-47e4-b555-32bc9d86036c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Ingresado]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="444" y="387" width="110" height="20" uuid="7527fdc3-c74c-4b2a-a383-4062f6cbd71f"/>
+			</rectangle>
+			<textField>
+				<reportElement x="443" y="387" width="110" height="20" uuid="85504214-fecd-41f2-8be2-fe71e9be3ebf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{totalpagado_venta_2}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="443" y="0" width="111" height="387" uuid="bd35890d-8a31-4dab-a81c-c9153f06b864"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="221" y="0" width="111" height="387" uuid="621229d9-a425-442e-bb3e-1f53712ef288"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="332" y="0" width="111" height="387" uuid="870dae6c-0da2-47a8-8394-18fa990b148f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="110" y="0" width="111" height="387" uuid="ccd9b033-8d38-4400-beaf-4f5cb1bc656a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="111" height="387" uuid="13aad505-d576-43a7-9873-6a62c7b973c3"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="2" y="0" width="110" height="30" uuid="3c151d0a-0b6c-495a-9d0a-3653a1821b96"/>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechad">
+					<subreportParameterExpression><![CDATA[$P{fechad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\inforventa.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

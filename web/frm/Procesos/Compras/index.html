@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> COMPRA </title>
+        <!---   <link rel="icon" type="image/png" href="../../../favicon.png" /> --->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body background="../../../img/fondo_3.jpg" style="background-size: 100%">
+
+
+        <div id="buscar2" style="position: absolute; z-index: 1"></div>
+    <center>
+        <div id="confirmar"></div>
+
+
+        <div id="parafondo" class="parafondooscurito">
+            <div id="buscar" style="width: 200px"></div>
+        </div>
+
+    </center>
+
+    <div style="background-color: #c0c0c0" id="detalleFactura" class="panel primary-bordo">
+        <div class="panel-heading centrado">Modificar Compra</div>
+        <div class="panel-body" style="background-color: #e7e7e7">
+            <form id="formLinea">
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id Linea</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_detallecompra" name="id_detallecompra" type="text" class="fcontrolbordo input-sm" placeholder="Id" readonly="readonly">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Producto</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_producto" name="id_producto" type="text" class="fcontrolbordo input-sm" placeholder="Id" readonly="readonly">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="nombre_producto" name="nombre_producto" type="text" class="fcontrolbordo input-sm" placeholder="Nombre Producto" readonly="readonly">
+                    </div>
+                    <div class="col-md-1">
+                        <span>Codigo</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="codigo_producto" name="codigo_producto" type="text" class="fcontrolbordo input-sm" placeholder="codigo" readonly="readonly">
+
+                    </div>
+                    <div class="col-md-2">   
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Cantidad</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="cantidad_detallecompra" name="cantidad_detallecompra" type="text" class="fcontrolbordo input-sm derecha" placeholder="Cantidad" onkeypress="return SoloNumeros(event)">
+                        <a style="color: red" id='validacion2'></a>
+                    </div>
+
+                    <div class="col-md-1">
+                        <span>Porcentaje IVA</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="iva_producto" name="iva_producto" type="text" class="fcontrolbordo input-sm centrado" value="10%" placeholder="iva" readonly="readonly">
+
+                    </div>
+                </div>
+                <hr>
+
+                <br>
+
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonModificarLinea" type="button" class="btn bordo bordo1 btn-sm">Modificar Pedido <span class="glyphicon glyphicon-edit"></span></button>
+            <button id="botonSalirLinea" type="button" class="btn bordo bordo1 btn-sm">Salir <span class="glyphicon glyphicon-print"></span></button>
+        </div>
+    </div>
+
+    <!--##########################################################################################-->
+    <center>
+        <div id="Deposito" class="panel primary-bordo" style="background-color: #e7e7e7;width: 70%; margin-top: 2%" >
+            <div class="panel-heading centrado">Descripcion</div>
+            <div class="panel-body">
+                <form id="formDeposi">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id Linea</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="id_detallepedidop" name="id_detallepedidop" type="text" class="fcontrolbordo input-sm" placeholder="Id" readonly="readonly">
+                        </div>
+                        <div class="col-md-2 oculto">
+                            <input id="id_productos" name="id_productos" type="text" class="fcontrolbordo input-sm">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2 oculto">
+                            <span>Cod.Barra</span>
+                        </div>
+                        <div class="col-md-3 oculto">
+                            <input id="codigo_productos" name="codigo_producto" type="text" class="fcontrolbordo input-sm" placeholder="Codigo de Barra" disabled="disabled">
+                        </div>
+                        <div class="col-md-2">
+                            <span>Producto</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="nombre_productos" name="nombre_producto" type="text" class="fcontrolbordo input-sm" placeholder="Nombre Producto" readonly="readonly">
+                        </div>
+                        <div class="col-md-2">
+                            <span>Descripcion</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="descripcion_producto" name="descripcion_producto" type="text" class="fcontrolbordo input-sm" placeholder="descripcion_producto" disabled="disabled">
+                        </div>
+
+                    </div>
+
+
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <span>Cantidad</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="cantidad_entrantes" name="cantidad_entrantes" type="text" class="fcontrolbordo input-sm centrado" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+
+                    </div>
+
+
+                    <hr>
+                    <div class="row centrado">
+                        <div class="col-md-2">
+                            <span>Cantidad entrante</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="cantidad_entrante" name="cantidad_entrante" type="text" class="fcontrolbordo input-sm centrado" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        <div class="col-md-2 oculto">
+                            <input id="cantidad_detallepedidop" name="cantidad_detallepedidop" type="text" class="fcontrolbordo input-sm centrado" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+                        <div class="col-md-2">
+                            <span>Diferencia</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="cantidad_faltante" name="cantidad_faltante" type="text" class="fcontrolbordo input-sm centrado" placeholder="Cantidad" onKeyPress="return soloNumeros(event)" >
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span>Precio de Compra</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="preciocompra_producto" name="preciocompra_producto" type="text" class="fcontrolbordo input-sm" placeholder="Precio Compra" onkeypress="return SoloNumeros(event)">
+                            <a style="color: red" id='validacion3'></a>
+                        </div>
+
+                        <div class="col-md-8">   
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Total</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="preciototal_detallepedidop" name="preciototal_detallepedidop" type="text" class="fcontrolbordo input-sm" placeholder="Subtotal" onkeypress="return pretotal(this)" readonly="readonly">
+                        </div>
+                        <div class="col-md-9">   
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row centrado">
+
+                        <div class="col-md-2">
+                            <span>Depositar en:</span>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="nombre_deposito" name="nombre_deposito" type="text" class="fcontrolbordo input-sm" value="DEPOSITO A TRACERO" placeholder="Seleccionar Deposito">
+                        </div>
+
+                        <div class="col-md-3 oculto">
+                            <input id="id_deposito" name="id_deposito" type="text" value="1" class="fcontrolbordo input-sm" placeholder="Seleccionar Deposito">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonDefinir" type="button" onclick="modificarFaltante()" class="btn bordo bordo1 btn-sm">Definir <span class="glyphicon glyphicon-floppy-disk"></span></button>
+                <button id="botonSalirDeposi" type="button" class="btn bordo bordo1 btn-sm">SALIR <span class="glyphicon glyphicon-off"></span></button>
+            </div>
+        </div>
+    </center>
+    <!-- ###########################################################################################-->
+    <center>  <div id="panelDiseño" class="panel primary-bordo">
+            <div class="panel-heading centrado">Datos De Pedidos</div>
+            <div class="panel-body">
+                <form id="formProgramas">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span> Pedido N° </span>
+                        </div> 
+                        <div class="col-md-2">
+                            <input id="id_pedidoproveedor" name="id_pedidoproveedor" type="text" class="fcontrolbordo input-sm" placeholder="Id" onKeyPress="return soloNumeros(event)">
+                            <a style="color: red" id='validacion'></a>
+                        </div>
+                        <div class="col-md-1" style="position: absolute;left: 45%">
+                            <span><img src="../../../img/camionProveedor.png" alt=""/></span>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="panelproveedor">
+                        <div class="row">
+                            <div class="col-md-1 oculto">
+                                <span>Proveedor</span>
+                            </div>
+                            <div class="col-md-1 oculto">
+                                <input id="id_personap" name="id_personap" type="text" class="fcontrolbordo input-sm" placeholder="Id">
+                            </div>
+
+
+
+                            <div class="col-md-3"><span>Ruc</span>
+                                <input id="ruc_personap" name="ruc_personap" type="text" class="fcontrolbordo input-sm centrado" placeholder="Ruc" disabled="disabled">
+                            </div>
+
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-3"><span>Proveedor</span>
+                                <input id="nombre_personap" name="nombre_personap" type="text" class="fcontrolbordo input-sm centrado" placeholder="Proveedor" disabled="disabled">
+                            </div>
+
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-4"> <span>Correo</span>
+                                <input id="correo_personap" name="ruc_personap" type="text" class="fcontrolbordo input-sm centrado" placeholder="@gmail" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span> Fecha</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="fecha_pedidop" name="fecha_pedidop" type="date" class="fcontrolbordo 
+                                   input-sm" disabled="disabled" >                         
+                        </div>
+
+                        <div class="col-md-2">
+                            <span> Estado</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="estado_pedidop" name="estado_pedidop" type="text" class="fcontrolbordo input-sm"   value="PENDIENTE"   disabled="disabled">                                    
+                        </div>
+                    </div>
+                    <!--  <div style="font-size: 20px;text-align: center"><b>DETALLE AJUSTES</b></div> -->
+                </form>
+                <br>
+                <div id="detalle" hidden="">
+                    <h3> Productos Pedidos</h3>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th><center>Pedido N°</center></th>
+                        <th><center>Cod Barra</center></th>
+                        <th><center>Descripcion</center></th>
+                        <th><center>Cantidad</center></th>
+                        <th><center>Entrante</center></th>
+                        <th><center>faltante</center></th>
+                        <th><center>reguistro</center></th>
+                        </tr>
+                        </thead>
+                        <tbody id="contenidoDetalle">
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonSalir" type="button" class="btn bordo bordo1 btn-sm">Salir <span class="glyphicon glyphicon-print"></span></button>
+                <button id="botonFacturar" type="button" class="btn bordo bordo1 btn-sm">Comprobado <span class="glyphicon glyphicon-print"></span></button>
+            </div>
+        </div>
+
+
+        <!-- aca empiezan factura cabezera ######################################################################## -->
+
+        <div id="FormPrograma" class="panel primary-bordo">
+            <div class="panel-heading centrado">Compras <span id="susuario_usuario"></span></div>
+            <div class="panel-body" style="background-color: #e7e7e7">
+                <form id="formProgramaLinea">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Cod</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="sid_usuarios" name="sid_usuarios" type="text"
+                                   class="fcontrolbordo imput-sm" placeholder="id" readonly="readonly">
+                        </div>
+
+                        <div class="col-md-1">
+                            <span>Empleado</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="snombre_usuarios" name="snombre_usuarios" type="text" class="fcontrolbordo input-sm" placeholder="empleado" readonly="readonly">
+                        </div>
+                        <div class="col-md-7">   
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-1">
+                            <span>N°  Factura</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="numero_compra" name="numero_compra" type="text" class="fcontrolbordo input-sm derecha" placeholder="n°factura">
+                            <div id="val1"></div>
+                        </div>
+
+                        <div class="col-md-4">   
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_compra" name="id_compra" type="text" class="fcontrolbordo input-sm" placeholder="Id" onkeypress="return numeros(event)" readonly="readonly">
+                        </div>
+                        <div class="col-md-1">
+                            <span>Fecha Compra</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="fecha_compra" name="fecha_compra" type="Date" class="fcontrolbordo input-sm centrado" readonly="readonly">
+                        </div>
+                        <div class="col-md-1">
+                            <span>Condicion</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="condicion_compra" name="condicion_compra" value="CONTADO" type="text" class="fcontrolbordo input-sm centrado" placeholder="condicion" readonly="readonly">
+                        </div>
+                        <div class="col-md-4">   
+                        </div>
+                        <div class="col-md-1">
+                            <span>Estado</span>
+                        </div>
+                        <div class="col-md-2">
+                            <input id="estado_compra" name="estado_compra" type="text" class="fcontrolbordo input-sm centrado" value="PENDIENTE" placeholder="estado compra" readonly="readonly">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="panelproveedor">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span>Proveedor</span>
+                            </div>
+                            <div class="col-md-1">
+                                <input id="id_persona" name="id_persona" type="text" class="fcontrolbordo input-sm" placeholder="Id" disabled="disabled">
+                            </div>
+                            <div class="col-md-1">
+                                <span>Nombre</span>
+                            </div>
+                            <div class="col-md-3">
+                                <input id="nombre_persona" name="nombre_persona" type="text" class="fcontrolbordo input-sm" placeholder="Nombre Proveedor" disabled="disabled">
+                            </div>
+
+                            <div class="col-md-1">
+                                <span>Ruc</span>
+                            </div>
+                            <div class="col-md-2">
+                                <input id="ruc_persona" name="ruc_persona" type="text" class="fcontrolbordo input-sm" placeholder="N° Ruc" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <br>
+                    <div class="row">
+
+
+                    </div>
+
+                    <div id="detallep" hidden="">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="centrado colortabla">Id</th>
+                                    <th class="centrado colortabla">Producto</th>
+                                    <th class="centrado colortabla">Descripcion</th>
+                                    <th class="centrado colortabla">Codigo</th>
+                                    <th class="centrado colortabla">Precio Unitario</th>
+                                    <th class="centrado colortabla">Cantidad</th>
+                                    <th class="centrado colortabla">Sub Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contenidoDetallep">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--     <div id="detallep" hidden="">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th><center>Pedido N°</center></th>
+                            <th><center>Producto N°</center></th>
+                            <th><center>Producto</center></th>
+                            <th><center>Cantidad</center></th>
+                            <th class="centrado"><button onclick="agregarLineas()" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            </thead>
+                            <tbody id="contenidoDetallep">
+                            </tbody>
+                        </table>
+                        <br>
+                    </div> -->
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonAnul" type="button" class="btn bordo bordo1 btn-sm" data-toggle="modal" data-target="#Anular"><span class="glyphicon glyphicon-ok-sign"></span> Anular</button>
+                <!--<button id="botonCobrar" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-credit-card"></span> Cobrar</button>-->
+                <button id="botonFinalizar" type="button" class="btn bordo bordo1 btn-sm" data-toggle="modal" data-target="#modalImpri"><span class="glyphicon glyphicon-credit-card"></span> Finalizar</button>
+                <button id="botonCancelar" type="button" class="btn bordo bordo1 btn-sm"><span class="glyphicon glyphicon-log-out"></span> Cancelar</button>
+            </div>
+        </div>
+    </center>
+    <!--################################################################################################-->
+    <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    Está seguro de eliminar estos datos?
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn bordo bordo1 btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalImpri" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body centrado">
+                    Imprimir Comprobante de Compra ?
+                </div>
+                <div class="row oculto">
+                    <div class="col-md-3">
+                        <input id="total" name="total" type="text" class="fcontrolbordo input-sm" placeholder="total" readonly="readonly">
+                    </div>
+                    <div class="col-md-3">
+                        <input id="liqiva" name="liqiva" type="text" class="fcontrolbordo input-sm" placeholder="vuelto" onkeypress="return soloNumeros(event)" style="" readonly="readonly">
+                    </div>
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonImprimir" type="button" class="btn bordo bordo1 btn-sm">Imprimir Comprobante </button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+
+    <div class="modal fade" id="Anular" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body centrado" id="ok1">
+                    ¿¿ Desea Anular Comprobante ??
+                </div>
+                <div class="modal-body centrado oculto" id="ok">
+                    <h3> Anulada</h3>
+                </div>
+                <div class="modal-footer centrado" id="ok2">
+                    <button id="botonAnularModal" type="button" class="btn bordo bordo1 btn-sm" onclick="ModificarAnular()">Anular </button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+                        verificarSesion(true);
+                        $("#Deposito").css("display", "none");
+                        $("#panelPrograma").css("display", "none");
+                        $("#detalleFactura").css("display", "none");
+                        // pertenece a la cabezera caja
+                        $("#buscar").css("display", "none");
+                        $("#panelLinea").css("display", "none");
+                        $("#detalleFactura").css("display", "none");
+                        $("#panelDiseño").css("display", "block");
+                        $("#FormPrograma").css("display", "none"); // pertenece a la cabezara factura
+                        $("#id_pedidoproveedor").focus();
+                        $("#botonPagar").prop('disabled', true);
+                        //buscarIdPedidoProveedor();
+                        //siguienteCampo("#id_ajuste", "#id_proveedor", false);
+
+                        //siguienteCampo("#id_producto", "#cantidad_productoajuste", false);
+
+                        if ($("#id_pedidoproveedor").val() === "0") {
+                            // siguienteCampo("#id_proveedor", "#botonAgregar", false);
+                        } else {
+
+                            // siguienteCampo("#id_proveedor", "#botonModificar", false);
+                        }
+
+                        //   buscarIdUsuarioClave();
+
+                        $("#id_pedidoproveedor").keyup(function (event) {
+                            if ($("#id_pedidoproveedor").val() === "") {
+                                //$("#id_pedidoproveedor").val("0");
+                                 document.getElementById("validacion").innerHTML = "hola";
+                                 
+                            }else{
+                         
+                            buscarIdPedidoProveedor();
+                            //$("#id_pedidoproveedor").val("0");
+                        }
+                        });
+                        $("#id_producto").focusout(function (event) {
+                            if ($("#id_producto").val() === "") {
+                                $("#id_producto").val("0");
+                            }
+                            buscarIdProducto();
+                        });
+                        $("#botonBuscarIdPedidoProveedor").on('click', function () {
+                            $("#buscar").load("buscar.html");
+                            $("#buscar").fadeIn("slow");
+                            $("#panelPrograma").fadeOut("slow");
+                        });
+
+                        $("#botonSalirDeposi").on('click', function () {
+                            $("#Deposito").fadeOut("slow");
+                            $("#panelDiseño").fadeIn("slow");
+                        });
+                        /*         $("#botonBuscarIdProveedor").on('click', function () {
+                         $("#buscar").load("buscarProveedores.html");
+                         $("#buscar").fadeIn("slow");
+                         $("#panelPrograma").fadeOut("slow");
+                         });*/
+
+
+                        $("#cantidad_entrante").keyup(function (event) {
+
+                            if ($("#cantidad_entrante").val() !== "" && $("#preciocompra_producto").val() !== "") {
+                                pretotal(this);
+                            }
+                        });
+
+                        $("#preciocompra_producto").keyup(function (event) {
+                            if ($("#cantidad_entrante").val() !== "" && $("#preciocompra_producto").val() !== "") {
+                                pretotal(this);
+                            }
+                        });
+                        $("#cantidad_entrante").keyup(function (event) {
+                            if ($("#cantidad_entrante").val() !== "" && $("#cantidad_entrantes").val() !== "") {
+                                faltante(this);
+                            }
+                        });
+
+
+                        $("#botonEliminarAlert").on('click', function () {
+                            $('#confirmarEliminar').modal('hide');
+                            eliminarPedido();
+                        });
+
+
+                        $("#botonAgregarLinea").on('click', function () {
+                            if (validarEstado()) {
+                                SumarPedidoDetalle();
+                            }
+                        });
+
+                        $("#botonFacturar").on('click', function () {
+                            if (validarFormulario()) {
+                                confirfactura();
+                            }
+
+                            //       if (validarFormulario()) {
+                            //          confirfactura();
+                            //      }
+
+                        });
+
+                        $("#id_pedidoproveedor").keyup(function (event) {
+                            document.getElementById("validacion").innerHTML = "";
+                        });
+                        $("#preciocompra_producto").keyup(function (event) {
+                            document.getElementById("validacion3").innerHTML = "";
+                        });
+                        $("#cantidad_detallecompra").keyup(function (event) {
+                            document.getElementById("validacion2").innerHTML = "";
+                        });
+
+                        $("#botonAgregaLinea").on('click', function () {
+                            if (validarFormularioPedidoProveedor()) {
+                                AgregarPedidoDetalle();
+                            }
+                        });
+
+
+                        $("#botonAnular").on('click', function () {
+                            ModificarAnular();
+
+                        });
+
+                        $("#botonModificarLinea").on('click', function () {
+                            if (validarFormularioLinea()) {
+                                modificarCompraDetalle();
+                            }
+
+                        });
+
+
+
+                        $("#botonSalirLinea").on('click', function () {
+                            $("#parafondo").fadeOut("slow");
+                            $("#detalleFactura").fadeOut("slow");
+                            $("#FormPrograma").fadeIn("slow");
+                        });
+
+                        $("#botonCancelar").on('click', function () {
+                            $("#panelDiseño").fadeIn("slow");
+                            $("#FormPrograma").fadeOut("slow");
+                            setTimeout(' location.reload()', 1000);
+
+                        });
+                        //verificarSesion(true);
+                        $("#desde_id").focus();
+                        //siguienteCampo("#desde_id", "#hasta_id", false);
+                        $("#botonImprimir").on('click', function () {
+
+                            ModificarCobrado();
+                        });
+                        $("#botonSalir").on('click', function () {
+                            location.href = "../../../menu.html";
+                        });
+
+                        function imp() {
+                            var d = $("#id_compra").val();
+                            var iva10 = $("#liqiva").val();
+                            var totalpagar = $("#total").val();
+
+                            var jsp = "jsp/tablas.jsp";
+                            window.open(jsp + "?d=" + d + "&iva10=" + iva10 + "&totalpagar=" + totalpagar);
+                            setTimeout('location.reload()', 1900);
+                        }
+
+                        $("#id_caja").focusout(function (event) {
+                            if ($("#id_caja").val() === "") {
+                                $("#id_caja").val("0");
+                            }
+                            buscarIdCajas();
+                            var id = $("#id_caja").val();
+                            $("#id_caja").val("0");
+                            //var img = "<img src='../../../img/pedidos/" + id + ".jpg' alt=''>";
+                            //$("#foto").html(img);
+                        });
+
+                        $("#botonFinalizar").on('click', function () {
+                            if($("#numero_compra").val()==="" ){
+                                 document.getElementById("val1").innerHTML = "Especifique Referencia";
+                            }else{
+                                buscarIdTotal();
+                            }
+                            
+                        });
+
+                        /*    $("#nombre_deposito").on('click', function () {
+                         $("#buscar").load("buscarmar.html");
+                         $("#buscar").fadeIn("slow");
+                         $("#parafondo").fadeIn("slow");
+                         // $("#panelCaja").fadeOut("slow");
+                         $("#panelDetalleCaja").fadeOut("slow");
+                         $("#buscar").animate({opacity: "0.9", left: "+=50", width: "600", position: "absolute"}, 1000)
+                         //.animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'})
+                         //.animate({opacity: "1", left: "0", width: "260"}, "slow")
+                         //.animate({top: "0", width: "500", fontSize: '1.2em'}, "fast")
+                         // .slideUp()
+                         //.slideDown(1800)
+                         return false;
+                         });*/
+                        $("#nombre_deposito").keypress(function (event) {
+                            var keycode = (event.keycode ? event.keycode : event.which);
+                            if (keycode == "13") {
+                                alert("deposito");
+                                $("#buscar2").load("buscarmar.html");
+                                $("#buscar2").fadeIn("slow");
+                                // $("#parafondo").fadeIn("slow");
+                                // $("#panelPrograma").fadeOut("slow");
+                                // $("#FormPrograma").fadeIn("slow");
+                                $("#buscar2").animate({opacity: "0.9", left: "+=300", width: "400", position: "absolute"}, 1900)
+                                //.animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'})
+                                //.animate({opacity: "1", left: "0", width: "260"}, "slow")
+                                //.animate({top: "0", width: "500", fontSize: '1.2em'}, "fast")
+                                // .slideUp()
+                                //.slideDown(1800)
+                                return false;
+                            }
+                        });
+
+                        $("#id_ventap").focusout(function (event) {
+                            if ($("#id_ventap").val() === "") {
+                                $("#id_ventap").val("0");
+                            }
+                            buscarIdVentaC();
+                        });
+
+                        /*       $("#vuelto").focusout(function (event) {
+                         
+                         });*/
+
+                        $("#importe_caja").keypress(function (event) {
+                            var keycode = (event.keycode ? event.keycode : event.which);
+                            if (keycode == "13") {
+                                if ($("#vuelto").val() !== "" || ($("#vuelto").val() !== 0) && ($("#total").val() !== "") || ($("#total").val() !== 0)) {
+                                    vuelto(this);
+                                }
+                            }
+                        });
+                        /*  $("#botonAgregarCaja").on('click', function () {
+                         alert("jn");
+                         
+                         $("#buscar").load("buscarcaja.html");
+                         $("#buscar").fadeIn("slow");
+                         $("#panelPrograma").fadeOut("slow");
+                         $("#FormPrograma").fadeOut("slow");
+                         });*/
+
+                        $("#botonAgregarCaja").on('click', function () {
+                            if (validarFormulario()) {
+                                abrirCaja();
+                            }
+
+                        });
+
+                        $("#botonCierra").on('click', function () {
+                            cerrarCaja();
+
+
+                        });
+
+                        /*  $("#botonAgregarCaja").on('click', function () {
+                         miventana = window.open("../../Procesos/cajas/index.html", "tete", "width=900,left=200, top= 300");
+                         miventana.resizeTo(1100, 400);
+                         });*/
+
+                        $("#id_persona").keypress(function (event) {
+                            var keycode = (event.keycode ? event.keycode : event.which);
+                            if (keycode == "13") {
+                                $("#buscar").load("buscarPersona.html");
+                                $("#buscar").fadeIn("slow");
+                                $("#parafondo").fadeIn("slow");
+                                $("#panelPrograma").fadeOut("slow");
+                                $("#FormPrograma").fadeIn("slow");
+                                $("#buscar").animate({opacity: "0.9", left: "+=50", width: "800", position: "absolute"}, 1900)
+                                //.animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'})
+                                //.animate({opacity: "1", left: "0", width: "260"}, "slow")
+                                //.animate({top: "0", width: "500", fontSize: '1.2em'}, "fast")
+                                // .slideUp()
+                                //.slideDown(1800)
+                                return false;
+                            }
+                        });
+
+
+
+                        $("#abrircajaa").on('click', function () {
+                            //  $("#modadecajaotro").show();
+                            $("#abrircajaa").load("../cajas/index.html");
+                            $("#abrircajaa").css("position", "absolute");
+                            $("#abrircajaa").css("left", "0%");
+                            $("#abrircajaa").css("z-index", "1");
+                            $("#abrircajaa").css("width", "100%");
+                            $("#abrircajaa").css("background-color", "rgba(0,0,0,0.4)");
+                            $("#abrircajaa").css("height", "100%");
+                            $("#abrircajaa").css("top", "0%");
+                        });
+
+                        //Mostrar bloque
+                        $("#c2").click(function () {
+                            $("#cont1").show("slow");
+                        });
+
+//Ocultar / Mostrar bloque
+                        $("#c1b").click(function () {
+                            $("#cont1").toggle(1500);
+                        }, function () {
+                            $("#cont1").toggle(1500);
+                        });
+
+//Cambiar tamaÃ±o
+                        $("#c3").click(function () {
+                            $("#cont1").animate({fontSize: '2.4em', width: 400, padding: 24}, 2500);
+                        });
+
+//Ocultar con FadeOut
+                        $("#c4").click(function () {
+                            $("#cont1").fadeToggle(3000);
+                        });
+
+//Mostrar con FadeIn
+                        $("#c5").click(function () {
+                            $("#cont1").fadeIn(3000);
+                        });
+//Mover
+                        $("#c6").click(function () {
+
+                            $("#cont1").animate({opacity: "0.1", left: "+=400", fontSize: '1em', width: "200"}, 1200)
+                                    .animate({opacity: "0.4", top: "+=160", height: "20", width: "80", fontSize: '0.5em'}, "slow")
+                                    .animate({opacity: "1", left: "0", width: "260"}, "slow")
+                                    .animate({top: "0", width: "260", fontSize: '1.2em'}, "fast")
+                                    .slideUp()
+                                    .slideDown(1800)
+                            return false;
+
+                        });
+//Cambiar estilo CSS
+                        $("#c7").click(function () {
+                            $("#cont1").css({'border': '4px solid #b7e5ff', 'color': '#cc3333', 'font-weight': 'bold', 'background-color': '#ffffff'});
+                        });
+
+//Toca para ocultarme
+                        $("#cont2").click(function () {
+                            $(this).hide().delay(1500).show(1500);
+                        });
+
+//Fondo amarillo
+                        $(".yellow").hover(
+                                function () {
+                                    $(this).addClass("hover");
+                                },
+                                function () {
+                                    $(this).removeClass("hover");
+                                }
+                        );
+
+//Contador de caracteres
+                        $('textarea').keyup(updateCount);
+                        $('textarea').keydown(updateCount);
+                        function updateCount() {
+                            var cs = $(this).val().length;
+                            $('#characters').text(cs);
+                        }
+
+
+//Ocultar
+                        $("#c9").click(function () {
+                            $("#noticias").hide(1500);
+                        });
+
+
+
+//Version de JQuery
+                        $("#c11").click(function () {
+                            var version = $().jquery;
+                            alert("Estas usando la versiÃ³n: " + version + " de JQuery");
+                        });
+
+
+    </script>
+</body>
+<script 
+</html>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InformePedidoCliente" pageWidth="595" pageHeight="769" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d23b03eb-abc4-4b89-9a8d-e73ac951cead">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:\\trabajo de fereteria\\PARA LA EXPO\\FAC\\web\\rpt\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechad" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pedidoclientes
+where fecha_pedidov >= $P{fecha}
+AND fecha_pedidov <= $P{fechad} order by id_pedidocliente]]>
+	</queryString>
+	<field name="id_pedidocliente" class="java.lang.Integer"/>
+	<field name="fecha_pedidov" class="java.sql.Date"/>
+	<field name="estado_pedidov" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#006666" uuid="b925d2a7-5bc7-47eb-9808-b3ba8e26b368"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="307" height="36" forecolor="#FFFFFF" uuid="bab3a1a9-1bf4-44c7-8c3b-d9fb2cd44cad"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Informes de Pedidos Ventas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="59" width="105" height="20" forecolor="#FFFFFF" uuid="0d6dede8-ab6c-4a26-90ad-da6851fe9a98"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Busqueda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="451" y="59" width="100" height="20" forecolor="#FFFFFF" uuid="46319e63-f52a-466a-8435-eb88f7b98086"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_pedidov}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="188" y="79" width="179" height="20" uuid="8c3499c4-2065-45c9-9965-846ac8dfb9b9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="79" width="188" height="20" uuid="221e9a1b-fa07-472f-ae76-452a6ebfbd88"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="79" width="188" height="20" uuid="d2d005db-ed7d-4278-bb6b-bf2f35141440"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="79" width="188" height="20" uuid="f75e214d-2aee-40f7-a37c-192018f861e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Pedido Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="79" width="179" height="20" uuid="a7c045a8-f5c8-4430-9cbe-88a275dc2ca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="79" width="188" height="20" uuid="775b6ead-3a87-4cea-b0aa-1f7abb307144"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="387">
+			<rectangle>
+				<reportElement x="0" y="0" width="188" height="360" uuid="a86f715e-6ac3-4378-ae63-649258194315"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="188" y="0" width="179" height="360" uuid="a1bfc618-8ac2-4b76-93d0-9b023205706e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="0" width="188" height="360" uuid="449eeee6-bd18-4984-b6b9-af3127d677dd"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="0" width="161" height="58" uuid="66f7e65a-db27-4126-9a5c-fe2753623ee9"/>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechad">
+					<subreportParameterExpression><![CDATA[$P{fechad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\fechap.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+</jasperReport>
